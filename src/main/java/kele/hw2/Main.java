@@ -4,8 +4,10 @@ public class Main {
     public static void main(String[] args) {
         UserInterface.greetUser();
         Board player1 = new Board("Kele");
-        player1.addShip("A",2,3,"vertical","right");
-        player1.addShip("F",5,4,"vertical","left");
+        player1.addShip("A",2,2,"vertical","right");
+        player1.addShip("B",4,3,"vertical","left");
+        player1.addShip("C",3,4,"horizontal","below");
+        player1.addShip("F",5,5,"horizontal","above");
         player1.printBoard();
 //        System.out.println(player1.getName() + "'s board after miss on A1 and hit on C6");
 //        player1.addMiss("A",1);
