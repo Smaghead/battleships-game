@@ -9,18 +9,20 @@ public class AddShipToBoard {
 
 
     protected void addShip(Integer length) {
-        String row = UserInterface.getStringInput("In which row do you want your ship to start?").toUpperCase();
-        Integer column = UserInterface.getIntInput("In which column do you want your ship to start?");
-        String direction = UserInterface.getStringInput("In which direction do you want your ship to go? vertical/horizontal").toLowerCase();
-        if ("vertical".equals(direction)) {
-            String orientation = UserInterface.getStringInput("In which orientation do you want your ship to go? right/left").toLowerCase();
+        String row = InputValidator.getValidRow();
+        Integer column = InputValidator.getValidColumn();
+        String direction = InputValidator.getValidDirection();
+        if ("vertical".equals(direction) || "v".equals(direction)) {
+            //TODO migrate this to InputValidator
+            String orientation = Utility.getStringInput("In which orientation do you want your ship to go? \033[4mR\033[0might / \033[4mL\033[0meft").toLowerCase();
             if ("right".equals(orientation)) {
                 addShipVerticalRight(row, column, length);
             } else if ("left".equals(orientation)) {
                 addShipVerticalLeft(row, column, length);
             }
         } else if ("horizontal".equals(direction)) {
-            String orientation = UserInterface.getStringInput("In which orientation do you want your ship to go? below/above").toLowerCase();
+            //TODO migrate this to InputValidator
+            String orientation = Utility.getStringInput("In which orientation do you want your ship to go? \033[4mB\033[0melow / \033[4mA\033[0mbove").toLowerCase();
             if ("below".equals(orientation)) {
                 addShipHorizontalBelow(row, column, length);
             } else if ("above".equals(orientation)) {

@@ -54,7 +54,7 @@ public class Board extends AddShipToBoard {
         }
     }
 
-    public void printShipRow(Integer row) {
+    private void printShipRow(Integer row) {
         Integer shown = 0;
         for (int o = 0; o < 13; o++) {
             if (o % 2 == 0) {
@@ -70,7 +70,7 @@ public class Board extends AddShipToBoard {
         System.out.println("");
     }
 
-    public void printRow(Integer row) {
+    private void printRow(Integer row) {
         Integer shown = 0;
         for (int o = 0; o < 13; o++) {
             if (o % 2 == 0) {
