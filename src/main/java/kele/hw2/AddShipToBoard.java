@@ -13,23 +13,31 @@ public class AddShipToBoard {
         Integer column = InputValidator.getValidColumn();
         String direction = InputValidator.getValidDirection();
         if ("vertical".equals(direction) || "v".equals(direction)) {
-            String orientation = InputValidator.getValidVerticalOrientation();
-            if ("right".equals(orientation) || "r".equals(orientation)) {
-                addShipVerticalRight(row, column, length);
-            } else if ("left".equals(orientation) || "l".equals(orientation)) {
-                addShipVerticalLeft(row, column, length);
-            }
+            addShipVertical(length, row, column);
         } else if ("horizontal".equals(direction) || "h".equals(direction)) {
-            String orientation = InputValidator.getValidHorizontalOrientation();
-            if ("below".equals(orientation) || "b".equals(orientation)) {
-                addShipHorizontalBelow(row, column, length);
-            } else if ("above".equals(orientation) || "a".equals(orientation)) {
-                addShipHorizontalAbove(row, column, length);
-            }
+            addShipHorizontal(length, row, column);
         }
     }
 
-    private void addShipVerticalLeft(String row, Integer column, Integer length) {
+    private void addShipHorizontal(Integer length, String row, Integer column) {
+        String orientation = InputValidator.getValidHorizontalOrientation();
+        if ("below".equals(orientation) || "b".equals(orientation)) {
+            addShipHorizontalBelowOrientation(row, column, length);
+        } else if ("above".equals(orientation) || "a".equals(orientation)) {
+            addShipHorizontalAboveOrientation(row, column, length);
+        }
+    }
+
+    private void addShipVertical(Integer length, String row, Integer column) {
+        String orientation = InputValidator.getValidVerticalOrientation();
+        if ("right".equals(orientation) || "r".equals(orientation)) {
+            addShipVerticalRightOrientation(row, column, length);
+        } else if ("left".equals(orientation) || "l".equals(orientation)) {
+            addShipVerticalLeftOrientation(row, column, length);
+        }
+    }
+
+    private void addShipVerticalLeftOrientation(String row, Integer column, Integer length) {
         for (int i = 0; i < length; i++) {
             String[] technical = dataShips.get(row);
             String shipSign = String.valueOf(length);
@@ -37,7 +45,7 @@ public class AddShipToBoard {
         }
     }
 
-    private void addShipVerticalRight(String row, Integer column, Integer length) {
+    private void addShipVerticalRightOrientation(String row, Integer column, Integer length) {
         for (int i = 0; i < length; i++) {
             String[] technical = dataShips.get(row);
             String shipSign = String.valueOf(length);
@@ -45,7 +53,7 @@ public class AddShipToBoard {
         }
     }
 
-    private void addShipHorizontalBelow(String row, Integer column, Integer length) {
+    private void addShipHorizontalBelowOrientation(String row, Integer column, Integer length) {
         for (int i = 0; i < length; i++) {
             String[] technical = dataShips.get(row);
             String shipSign = String.valueOf(length);
@@ -56,7 +64,7 @@ public class AddShipToBoard {
         }
     }
 
-    private void addShipHorizontalAbove(String row, Integer column, Integer length) {
+    private void addShipHorizontalAboveOrientation(String row, Integer column, Integer length) {
         for (int i = 0; i < length; i++) {
             String[] technical = dataShips.get(row);
             String shipSign = String.valueOf(length);
