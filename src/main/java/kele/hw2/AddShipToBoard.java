@@ -3,8 +3,8 @@ package kele.hw2;
 import java.util.HashMap;
 
 public class AddShipToBoard {
-    protected HashMap<String, String[]> dataToShow = new HashMap<>();
-    protected HashMap<String, String[]> dataShips = new HashMap<>();
+    protected static HashMap<String, String[]> dataToShow = new HashMap<>();
+    protected static HashMap<String, String[]> shipData = new HashMap<>();
     protected static final String[] rowNames = {"A", "B", "C", "D", "E", "F"};
 
 
@@ -39,7 +39,7 @@ public class AddShipToBoard {
 
     private void addShipVerticalLeftOrientation(String row, Integer column, Integer length) {
         for (int i = 0; i < length; i++) {
-            String[] technical = dataShips.get(row);
+            String[] technical = shipData.get(row);
             String shipSign = String.valueOf(length);
             technical[column - 1 - i] = shipSign;
         }
@@ -47,7 +47,7 @@ public class AddShipToBoard {
 
     private void addShipVerticalRightOrientation(String row, Integer column, Integer length) {
         for (int i = 0; i < length; i++) {
-            String[] technical = dataShips.get(row);
+            String[] technical = shipData.get(row);
             String shipSign = String.valueOf(length);
             technical[column - 1 + i] = shipSign;
         }
@@ -55,7 +55,7 @@ public class AddShipToBoard {
 
     private void addShipHorizontalBelowOrientation(String row, Integer column, Integer length) {
         for (int i = 0; i < length; i++) {
-            String[] technical = dataShips.get(row);
+            String[] technical = shipData.get(row);
             String shipSign = String.valueOf(length);
             technical[column - 1] = shipSign;
             if (getRowIndex(row) < 5) {
@@ -66,7 +66,7 @@ public class AddShipToBoard {
 
     private void addShipHorizontalAboveOrientation(String row, Integer column, Integer length) {
         for (int i = 0; i < length; i++) {
-            String[] technical = dataShips.get(row);
+            String[] technical = shipData.get(row);
             String shipSign = String.valueOf(length);
             technical[column - 1] = shipSign;
             if (getRowIndex(row) > 1) {

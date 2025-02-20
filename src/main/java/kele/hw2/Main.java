@@ -4,7 +4,21 @@ public class Main {
     public static void main(String[] args) {
         UserInterface.greetUser();
         Board player1 = new Board("Kele");
-        player1.addAllShipsToBoard();
+//        player1.addAllShipsToBoard();
+//        try {
+//            Utility.validateIsValidMove("A", 1);
+//            player1.addHit("A", 1);
+//
+//        } catch (Exception e) {
+//            System.out.println("You shouldn't see this");
+//        }
+//        try {
+//            Utility.validateIsValidMove("A", 1);
+//            player1.addMiss("A", 1);
+//        } catch (Exception e) {
+//            System.out.println("You wanna see me!");
+//            ;
+//        }
         player1.printBoard();
 //        System.out.println(player1.getName() + "'s board after miss on A1 and hit on C6");
 //        player1.addMiss("A",1);
