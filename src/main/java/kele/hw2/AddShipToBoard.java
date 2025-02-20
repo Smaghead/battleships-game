@@ -13,19 +13,17 @@ public class AddShipToBoard {
         Integer column = InputValidator.getValidColumn();
         String direction = InputValidator.getValidDirection();
         if ("vertical".equals(direction) || "v".equals(direction)) {
-            //TODO migrate this to InputValidator
-            String orientation = Utility.getStringInput("In which orientation do you want your ship to go? \033[4mR\033[0might / \033[4mL\033[0meft").toLowerCase();
-            if ("right".equals(orientation)) {
+            String orientation = InputValidator.getValidVerticalOrientation();
+            if ("right".equals(orientation) || "r".equals(orientation)) {
                 addShipVerticalRight(row, column, length);
-            } else if ("left".equals(orientation)) {
+            } else if ("left".equals(orientation) || "l".equals(orientation)) {
                 addShipVerticalLeft(row, column, length);
             }
-        } else if ("horizontal".equals(direction)) {
-            //TODO migrate this to InputValidator
-            String orientation = Utility.getStringInput("In which orientation do you want your ship to go? \033[4mB\033[0melow / \033[4mA\033[0mbove").toLowerCase();
-            if ("below".equals(orientation)) {
+        } else if ("horizontal".equals(direction) || "h".equals(direction)) {
+            String orientation = InputValidator.getValidHorizontalOrientation();
+            if ("below".equals(orientation) || "b".equals(orientation)) {
                 addShipHorizontalBelow(row, column, length);
-            } else if ("above".equals(orientation)) {
+            } else if ("above".equals(orientation) || "a".equals(orientation)) {
                 addShipHorizontalAbove(row, column, length);
             }
         }

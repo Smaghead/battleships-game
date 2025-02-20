@@ -3,6 +3,32 @@ package kele.hw2;
 public class InputValidator extends Utility {
 
 
+    public static String getValidHorizontalOrientation() {
+        String orientation = "";
+        Integer errorCounter = 0;
+        while (!isHorizontalOrientationValid(orientation)) {
+            if (errorCounter > 0) {
+                System.out.println("Valid inputs: A,B,above,below");
+            }
+            orientation = Utility.getStringInput("In which orientation do you want your ship to go? \033[4mB\033[0melow / \033[4mA\033[0mbove").toLowerCase();
+            errorCounter++;
+        }
+        return orientation;
+    }
+
+    public static String getValidVerticalOrientation() {
+        String orientation = "";
+        Integer errorCounter = 0;
+        while (!isVerticalOrientationValid(orientation)) {
+            if (errorCounter > 0) {
+                System.out.println("Valid inputs: L,R,left,right");
+            }
+            orientation = Utility.getStringInput("In which orientation do you want your ship to go? \033[4mR\033[0might / \033[4mL\033[0meft").toLowerCase();
+            errorCounter++;
+        }
+        return orientation;
+    }
+
     public static String getValidDirection() {
         String direction = "";
         Integer errorCounter = 0;
@@ -13,7 +39,7 @@ public class InputValidator extends Utility {
             direction = Utility.getStringInput("In which direction do you want your ship to go? \033[4mV\033[0mertical / \033[4mH\033[0morizontal").toUpperCase();
             errorCounter++;
         }
-        return direction.toLowerCase();
+        return direction;
     }
 
     public static String getValidRow() {
@@ -42,12 +68,28 @@ public class InputValidator extends Utility {
         return column;
     }
 
+    private static Boolean isHorizontalOrientationValid(String orientation) {
+        orientation = orientation.toLowerCase();
+        return "b".equals(orientation) ||
+                "a".equals(orientation) ||
+                "below".equals(orientation) ||
+                "above".equals(orientation);
+    }
+
+    private static Boolean isVerticalOrientationValid(String orientation) {
+        orientation = orientation.toLowerCase();
+        return "l".equals(orientation) ||
+                "r".equals(orientation) ||
+                "left".equals(orientation) ||
+                "right".equals(orientation);
+    }
+
     private static Boolean isDirectionValid(String direction) {
-        direction = direction.toUpperCase();
-        return "V".equals(direction) ||
-                "H".equals(direction) ||
-                "VERTICAL".equals(direction) ||
-                "HORIZONTAL".equals(direction);
+        direction = direction.toLowerCase();
+        return "v".equals(direction) ||
+                "h".equals(direction) ||
+                "vertical".equals(direction) ||
+                "horizontal".equals(direction);
     }
 
     private static Boolean isRowValid(String row) {
