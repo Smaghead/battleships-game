@@ -36,7 +36,7 @@ public class InputValidator extends Utility {
             if (errorCounter > 0) {
                 System.out.println("Valid inputs: V,H,vertical,horizontal");
             }
-            direction = Utility.getStringInput("In which direction do you want your ship to go? \033[4mV\033[0mertical / \033[4mH\033[0morizontal").toUpperCase();
+            direction = Utility.getStringInput("In which direction do you want your ship to go? \033[4mV\033[0mertical / \033[4mH\033[0morizontal").toLowerCase();
             errorCounter++;
         }
         return direction;
