@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         UserInterface.greetUser();
         Board player1 = new Board("Kele");
-//        player1.addAllShipsToBoard();
+        player1.addAllShipsToBoard();
 //        try {
 //            Utility.validateIsValidMove("A", 1);
 //            player1.addHit("A", 1);

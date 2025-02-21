@@ -8,10 +8,10 @@ public class AddShipToBoard {
     protected static final String[] rowNames = {"A", "B", "C", "D", "E", "F"};
 
 
-    protected void addShip(Integer length) {
-        String row = InputValidator.getValidRow();
-        Integer column = InputValidator.getValidColumn();
-        String direction = InputValidator.getValidDirection();
+    protected void addShip(Integer length) throws InvalidMoveException {
+        String row = Validator.getValidRow();
+        Integer column = Validator.getValidColumn();
+        String direction = Validator.getValidDirection();
         if ("vertical".equals(direction) || "v".equals(direction)) {
             addShipVertical(length, row, column);
         } else if ("horizontal".equals(direction) || "h".equals(direction)) {
@@ -20,7 +20,7 @@ public class AddShipToBoard {
     }
 
     private void addShipHorizontal(Integer length, String row, Integer column) {
-        String orientation = InputValidator.getValidHorizontalOrientation();
+        String orientation = Validator.getValidHorizontalOrientation();
         if ("below".equals(orientation) || "b".equals(orientation)) {
             addShipHorizontalBelowOrientation(row, column, length);
         } else if ("above".equals(orientation) || "a".equals(orientation)) {
@@ -28,8 +28,8 @@ public class AddShipToBoard {
         }
     }
 
-    private void addShipVertical(Integer length, String row, Integer column) {
-        String orientation = InputValidator.getValidVerticalOrientation();
+    private void addShipVertical(Integer length, String row, Integer column) throws InvalidMoveException {
+        String orientation = Validator.getValidVerticalOrientation();
         if ("right".equals(orientation) || "r".equals(orientation)) {
             addShipVerticalRightOrientation(row, column, length);
         } else if ("left".equals(orientation) || "l".equals(orientation)) {
@@ -37,19 +37,27 @@ public class AddShipToBoard {
         }
     }
 
-    private void addShipVerticalLeftOrientation(String row, Integer column, Integer length) {
-        for (int i = 0; i < length; i++) {
-            String[] technical = shipData.get(row);
-            String shipSign = String.valueOf(length);
-            technical[column - 1 - i] = shipSign;
+    private void addShipVerticalLeftOrientation(String row, Integer column, Integer length) throws InvalidMoveException {
+        if (Validator.isAddShipVerticalLeftOrientationValid(row, column, length)) {
+            for (int i = 0; i < length; i++) {
+                String[] technical = shipData.get(row);
+                String shipSign = String.valueOf(length);
+                technical[column - 1 - i] = shipSign;
+            }
+        }else {
+            throw new InvalidMoveException();
         }
     }
 
-    private void addShipVerticalRightOrientation(String row, Integer column, Integer length) {
-        for (int i = 0; i < length; i++) {
-            String[] technical = shipData.get(row);
-            String shipSign = String.valueOf(length);
-            technical[column - 1 + i] = shipSign;
+    private void addShipVerticalRightOrientation(String row, Integer column, Integer length) throws InvalidMoveException {
+        if (Validator.isAddShipVerticalRightOrientationValid(row, column, length)) {
+            for (int i = 0; i < length; i++) {
+                String[] technical = shipData.get(row);
+                String shipSign = String.valueOf(length);
+                technical[column - 1 + i] = shipSign;
+            }
+        } else {
+            throw new InvalidMoveException();
         }
     }
 

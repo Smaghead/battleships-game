@@ -1,6 +1,8 @@
 package kele.hw2;
 
 
+import java.sql.SQLOutput;
+
 public class Board extends AddShipToBoard {
 
     private static final String FIRST_SEPARATOR_LINE = "_____________";
@@ -23,9 +25,18 @@ public class Board extends AddShipToBoard {
     public void addAllShipsToBoard() {
         for (int i = 1; i < 6; i++) {
             System.out.println("Placing ship with length: " + i);
-            addShip(i);
-            System.out.println("Currently placed ships on board:");
-            printBoardWithShips();
+            Boolean isRepeatNecessary = true;
+            while (isRepeatNecessary) {
+                try {
+                    addShip(i);
+                    isRepeatNecessary = false;
+                } catch (InvalidMoveException e) {
+                    System.out.println("Ships will collide, try again!");
+                    isRepeatNecessary = true;
+                }
+                System.out.println("Currently placed ships on board:");
+                printBoardWithShips();
+            }
         }
     }
 

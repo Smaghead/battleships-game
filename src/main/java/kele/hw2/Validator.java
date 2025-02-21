@@ -1,7 +1,47 @@
 package kele.hw2;
 
-public class InputValidator extends Utility {
+public class Validator extends Utility {
 
+
+    public static boolean isAddShipVerticalLeftOrientationValid(String row, Integer column, Integer length) {
+        for (int i = 0; i < length; i++) {
+            if (Utility.isShipThere(row, (column - i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isAddShipVerticalRightOrientationValid(String row, Integer column, Integer length) {
+        for (int i = 0; i < length; i++) {
+            if (Utility.isShipThere(row, (column + i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+    //TODO add those two validations as well
+    /*private void addShipHorizontalBelowOrientation(String row, Integer column, Integer length) {
+        for (int i = 0; i < length; i++) {
+            String[] technical = shipData.get(row);
+            String shipSign = String.valueOf(length);
+            technical[column - 1] = shipSign;
+            if (getRowIndex(row) < 5) {
+                row = rowNames[getRowIndex(row) + 1];
+            }
+        }
+    }
+
+    private void addShipHorizontalAboveOrientation(String row, Integer column, Integer length) {
+        for (int i = 0; i < length; i++) {
+            String[] technical = shipData.get(row);
+            String shipSign = String.valueOf(length);
+            technical[column - 1] = shipSign;
+            if (getRowIndex(row) > 1) {
+                row = rowNames[getRowIndex(row) - 1];
+            }
+        }
+    }*/
 
     public static String getValidHorizontalOrientation() {
         String orientation = "";

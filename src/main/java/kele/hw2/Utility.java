@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Utility extends AddShipToBoard {
     protected static Scanner scanner = new Scanner(System.in);
-    private static boolean isRepeatNecessary = true;
 
     public static String getStringInput(String question) {
         System.out.print(question + " - ");
@@ -12,6 +11,7 @@ public class Utility extends AddShipToBoard {
     }
 
     public static int getIntInput(String question) {
+        Boolean isRepeatNecessary = true;
         Integer integer = 0;
         while (isRepeatNecessary) {
             try {
@@ -27,27 +27,27 @@ public class Utility extends AddShipToBoard {
         return integer;
     }
 
-    private static boolean isShipThere(String row, Integer column) {
+    public static boolean isShipThere(String row, Integer column) {
         String[] technical = shipData.get(row);
         String dataToValidate = technical[column - 1];
         return !dataToValidate.equals("/");
     }
 
-    private static boolean isValidMove(String row, Integer column) {
+    public static boolean isValidMove(String row, Integer column) {
         String[] technical = dataToShow.get(row);
         String dataToValidate = technical[column - 1];
         return dataToValidate.equals("/");
     }
 
-    public static void validateIsValidMove(String row, Integer column) throws InvalidMoveException {
-        if (!isValidMove(row,column)){
-            throw new InvalidMoveException();
-        }
-    }
-
-    public static void validateIsShipThere(String row, Integer column) throws InvalidMoveException {
-        if (isShipThere(row,column)){
-            throw new InvalidMoveException();
-        }
-    }
+//    public static void validateIsValidMove(String row, Integer column) throws InvalidMoveException {
+//        if (!isValidMove(row,column)){
+//            throw new InvalidMoveException();
+//        }
+//    }
+//
+//    public static void validateIsShipThere(String row, Integer column) throws InvalidMoveException {
+//        if (isShipThere(row,column)){
+//            throw new InvalidMoveException();
+//        }
+//    }
 }
