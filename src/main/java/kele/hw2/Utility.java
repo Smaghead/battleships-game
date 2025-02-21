@@ -38,16 +38,4 @@ public class Utility extends AddShipToBoard {
         String dataToValidate = technical[column - 1];
         return dataToValidate.equals("/");
     }
-
-//    public static void validateIsValidMove(String row, Integer column) throws InvalidMoveException {
-//        if (!isValidMove(row,column)){
-//            throw new InvalidMoveException();
-//        }
-//    }
-//
-//    public static void validateIsShipThere(String row, Integer column) throws InvalidMoveException {
-//        if (isShipThere(row,column)){
-//            throw new InvalidMoveException();
-//        }
-//    }
 }

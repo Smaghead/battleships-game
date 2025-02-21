@@ -3,7 +3,7 @@ package kele.hw2;
 public class Validator extends Utility {
 
 
-    public static boolean isAddShipVerticalLeftOrientationValid(String row, Integer column, Integer length) {
+    public static boolean isAddShipHorizontalLeftOrientationValid(String row, Integer column, Integer length) {
         for (int i = 0; i < length; i++) {
             if (Utility.isShipThere(row, (column - i))) {
                 return false;
@@ -12,7 +12,7 @@ public class Validator extends Utility {
         return true;
     }
 
-    public static boolean isAddShipVerticalRightOrientationValid(String row, Integer column, Integer length) {
+    public static boolean isAddShipHorizontalRightOrientationValid(String row, Integer column, Integer length) {
         for (int i = 0; i < length; i++) {
             if (Utility.isShipThere(row, (column + i))) {
                 return false;
@@ -20,33 +20,35 @@ public class Validator extends Utility {
         }
         return true;
     }
-    //TODO add those two validations as well
-    /*private void addShipHorizontalBelowOrientation(String row, Integer column, Integer length) {
+
+    public static boolean isAddShipVerticalBelowOrientationValid(String row, Integer column, Integer length) {
         for (int i = 0; i < length; i++) {
-            String[] technical = shipData.get(row);
-            String shipSign = String.valueOf(length);
-            technical[column - 1] = shipSign;
+            if (Utility.isShipThere(row, column)) {
+                return false;
+            }
             if (getRowIndex(row) < 5) {
                 row = rowNames[getRowIndex(row) + 1];
             }
         }
+        return true;
     }
 
-    private void addShipHorizontalAboveOrientation(String row, Integer column, Integer length) {
+    public static boolean isAddShipVerticalAboveOrientationValid(String row, Integer column, Integer length) {
         for (int i = 0; i < length; i++) {
-            String[] technical = shipData.get(row);
-            String shipSign = String.valueOf(length);
-            technical[column - 1] = shipSign;
+            if (Utility.isShipThere(row, column)) {
+                return false;
+            }
             if (getRowIndex(row) > 1) {
                 row = rowNames[getRowIndex(row) - 1];
             }
         }
-    }*/
+        return true;
+    }
 
-    public static String getValidHorizontalOrientation() {
+    public static String getValidVerticalOrientation() {
         String orientation = "";
         Integer errorCounter = 0;
-        while (!isHorizontalOrientationValid(orientation)) {
+        while (!isVerticalOrientationValid(orientation)) {
             if (errorCounter > 0) {
                 System.out.println("Valid inputs: A,B,above,below");
             }
@@ -56,10 +58,10 @@ public class Validator extends Utility {
         return orientation;
     }
 
-    public static String getValidVerticalOrientation() {
+    public static String getValidHorizontalOrientation() {
         String orientation = "";
         Integer errorCounter = 0;
-        while (!isVerticalOrientationValid(orientation)) {
+        while (!isHorizontalOrientationValid(orientation)) {
             if (errorCounter > 0) {
                 System.out.println("Valid inputs: L,R,left,right");
             }
@@ -108,7 +110,7 @@ public class Validator extends Utility {
         return column;
     }
 
-    private static Boolean isHorizontalOrientationValid(String orientation) {
+    private static Boolean isVerticalOrientationValid(String orientation) {
         orientation = orientation.toLowerCase();
         return "b".equals(orientation) ||
                 "a".equals(orientation) ||
@@ -116,7 +118,7 @@ public class Validator extends Utility {
                 "above".equals(orientation);
     }
 
-    private static Boolean isVerticalOrientationValid(String orientation) {
+    private static Boolean isHorizontalOrientationValid(String orientation) {
         orientation = orientation.toLowerCase();
         return "l".equals(orientation) ||
                 "r".equals(orientation) ||

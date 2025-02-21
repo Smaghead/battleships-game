@@ -8,6 +8,7 @@ public class Board extends AddShipToBoard {
     private static final String FIRST_SEPARATOR_LINE = "_____________";
     private static final String LAST_SEPARATOR_LINE = "¯¯¯¯¯¯¯¯¯¯¯¯¯";
     private static final String COLUMNS = " 1 2 3 4 5 6 ";
+    private static final String ADD_SHIP_TOOL_TIP = "Board layout:\n Rows (left to right): 1,2,3,4,5,6\n Columns (top to bottom): A,B,C,D,E,F ";
     private static final String SEPARATOR_LINE = "-------------";
     private final String name;
 
@@ -23,7 +24,9 @@ public class Board extends AddShipToBoard {
     }
 
     public void addAllShipsToBoard() {
+        System.out.println(ADD_SHIP_TOOL_TIP);
         for (int i = 1; i < 6; i++) {
+            System.out.println("");
             System.out.println("Placing ship with length: " + i);
             Boolean isRepeatNecessary = true;
             while (isRepeatNecessary) {
