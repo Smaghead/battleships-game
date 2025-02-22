@@ -1,8 +1,6 @@
 package kele.hw2;
 
 
-import java.sql.SQLOutput;
-
 public class Board extends AddShipToBoard {
 
     private static final String FIRST_SEPARATOR_LINE = "_____________";
