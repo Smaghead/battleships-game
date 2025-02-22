@@ -33,9 +33,19 @@ public class Board extends AddShipToBoard {
                 try {
                     addShip(i);
                     isRepeatNecessary = false;
-                } catch (InvalidMoveException e) {
-                    System.out.println("Ships will collide, try again!");
-                    isRepeatNecessary = true;
+                } catch (RuntimeException e) {
+                    switch (e){
+                        case InvalidMoveException ignored -> {
+                            System.out.println("Ships will collide, try again!");
+                            isRepeatNecessary = true;
+                        }
+                        case IndexOutOfBoundsException ignored -> {
+                            System.out.println("Part(s) of the ship will be outside of the board");
+                            isRepeatNecessary = true;
+                        }
+                        default -> throw new IllegalStateException("Unexpected value: " + e);
+                    }
+
                 }
                 System.out.println("Currently placed ships on board:");
                 printBoardWithShips();
