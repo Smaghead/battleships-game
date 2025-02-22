@@ -22,9 +22,13 @@ public class Validator extends Utility {
     }
 
     public static boolean isAddShipVerticalBelowOrientationValid(String row, Integer column, Integer length) {
+        Integer counterF = 0;
         for (int i = 0; i < length; i++) {
-            if (Utility.isShipThere(row, column) || !isRowValid(row)) {
+            if (Utility.isShipThere(row, column) || !isRowValid(row) || counterF == 1) {
                 return false;
+            }
+            if ("F".equals(row)) {
+                counterF++;
             }
             if (getRowIndex(row) < 5) {
                 row = rowNames[getRowIndex(row) + 1];
@@ -34,9 +38,13 @@ public class Validator extends Utility {
     }
 
     public static boolean isAddShipVerticalAboveOrientationValid(String row, Integer column, Integer length) {
+        Integer counterA = 0;
         for (int i = 0; i < length; i++) {
-            if (Utility.isShipThere(row, column) || !isRowValid(row)) {
+            if (Utility.isShipThere(row, column) || !isRowValid(row) || counterA == 1) {
                 return false;
+            }
+            if ("A".equals(row)) {
+                counterA++;
             }
             if (getRowIndex(row) > 0) {
                 row = rowNames[getRowIndex(row) - 1];

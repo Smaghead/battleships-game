@@ -36,7 +36,7 @@ public class Board extends AddShipToBoard {
                 } catch (RuntimeException e) {
                     switch (e){
                         case InvalidMoveException ignored -> {
-                            System.out.println("Ships will collide, try again!");
+                            System.out.println("Ships will collide or part(s) of the ship will be outside of the board, try again!");
                             isRepeatNecessary = true;
                         }
                         case IndexOutOfBoundsException ignored -> {
