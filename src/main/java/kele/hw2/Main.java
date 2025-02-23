@@ -8,11 +8,11 @@ public class Main {
         System.out.println("Player 1 add all ships");
         player1.addAllShipsToBoard();
         System.out.println("p2 fire");
-        player2.fire(Validator.getValidRow(), Validator.getValidColumn(),player1);
-        System.out.println("p1 fire");
-        player1.fire(Validator.getValidRow(), Validator.getValidColumn(),player2);
+        player2.fireAction(player1);
+        System.out.println("p2 shipBoard");
+        player1.printBoardWithShips();
         System.out.println("p2 fire");
-        player2.fire(Validator.getValidRow(), Validator.getValidColumn(),player1);
+        player2.fireAction(player1);
 //        player2.addAllShipsToBoard();
 //        try {
 //            Utility.validateIsValidMove("A", 1);
