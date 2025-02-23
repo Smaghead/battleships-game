@@ -1,5 +1,7 @@
 package kele.hw2;
 
+import java.util.concurrent.TimeUnit;
+
 public class UserInterface extends Board {
     static Board player1 = new Board();
     static Board player2 = new Board();
@@ -15,20 +17,22 @@ public class UserInterface extends Board {
         player2.addAllShipsToBoard();
     }
 
-    public static void mainGameLoop() {
+    public static void mainGameLoop() throws InterruptedException {
         while (ShotHandler.getGameRunning() && turnTracker) {
             System.out.println("It's your turn " + player1.getName());
             player1.printBoard();
             player1.fireAction(player2);
-            clearScreen();
             turnTracker = false;
+            TimeUnit.SECONDS.sleep(6);
+            Utility.clearScreen();
         }
         while (ShotHandler.getGameRunning() && !turnTracker) {
             System.out.println("It's your turn " + player2.getName());
             player2.printBoard();
             player2.fireAction(player1);
-            clearScreen();
             turnTracker = true;
+            TimeUnit.SECONDS.sleep(6);
+            Utility.clearScreen();
         }
     }
 
@@ -50,9 +54,5 @@ public class UserInterface extends Board {
         player2.setName(Utility.getStringInput("Player 2 what is your nickname?"));
     }
 
-    // Kindly borrowed from the internet
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
+
 }

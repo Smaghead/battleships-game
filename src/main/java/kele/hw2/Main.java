@@ -1,7 +1,7 @@
 package kele.hw2;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         UserInterface.initGame();
         while (ShotHandler.getGameRunning()) {
             UserInterface.mainGameLoop();

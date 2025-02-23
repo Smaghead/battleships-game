@@ -29,6 +29,7 @@ public class Board extends AddShipToBoard {
             while (isRepeatNecessary) {
                 try {
                     addShip(i);
+                    Utility.clearScreen();
                     isRepeatNecessary = false;
                 } catch (RuntimeException e) {
                     switch (e){
