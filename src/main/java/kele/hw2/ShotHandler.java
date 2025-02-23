@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 
 public class ShotHandler {
-    private Boolean isGameRunning = true;
+    private static Boolean isGameRunning = true;
     protected HashMap<String, String[]> dataToShow = new HashMap<>();
     protected HashMap<String, String[]> shipData = new HashMap<>();
     protected static final String[] rowNames = {"A", "B", "C", "D", "E", "F"};
@@ -103,6 +103,10 @@ public class ShotHandler {
             isGameRunning = false;
         }
         isGameRunning = true;
+    }
+
+    public static Boolean getGameRunning() {
+        return isGameRunning;
     }
 
     public Integer getCarrierHp() {
