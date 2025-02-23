@@ -3,28 +3,28 @@ package kele.hw2;
 public class Validator extends Utility {
 
 
-    public static boolean isAddShipHorizontalLeftOrientationValid(String row, Integer column, Integer length) {
+    public static boolean isAddShipHorizontalLeftOrientationValid(String row, Integer column, Integer length, Board player) {
         for (int i = 0; i < length; i++) {
-            if (Utility.isShipThere(row, (column - i))) {
+            if (Utility.isShipThere(row, (column - i), player)) {
                 return false;
             }
         }
         return true;
     }
 
-    public static boolean isAddShipHorizontalRightOrientationValid(String row, Integer column, Integer length) {
+    public static boolean isAddShipHorizontalRightOrientationValid(String row, Integer column, Integer length, Board player) {
         for (int i = 0; i < length; i++) {
-            if (Utility.isShipThere(row, (column + i))) {
+            if (Utility.isShipThere(row, (column + i),player)) {
                 return false;
             }
         }
         return true;
     }
 
-    public static boolean isAddShipVerticalBelowOrientationValid(String row, Integer column, Integer length) {
+    public static boolean isAddShipVerticalBelowOrientationValid(String row, Integer column, Integer length, Board player) {
         Integer counterF = 0;
         for (int i = 0; i < length; i++) {
-            if (Utility.isShipThere(row, column) || !isRowValid(row) || counterF == 1) {
+            if (Utility.isShipThere(row, column, player) || !isRowValid(row) || counterF == 1) {
                 return false;
             }
             if ("F".equals(row)) {
@@ -37,10 +37,10 @@ public class Validator extends Utility {
         return true;
     }
 
-    public static boolean isAddShipVerticalAboveOrientationValid(String row, Integer column, Integer length) {
+    public static boolean isAddShipVerticalAboveOrientationValid(String row, Integer column, Integer length, Board player) {
         Integer counterA = 0;
         for (int i = 0; i < length; i++) {
-            if (Utility.isShipThere(row, column) || !isRowValid(row) || counterA == 1) {
+            if (Utility.isShipThere(row, column, player) || !isRowValid(row) || counterA == 1) {
                 return false;
             }
             if ("A".equals(row)) {
@@ -99,7 +99,7 @@ public class Validator extends Utility {
             if (errorCounter > 0) {
                 System.out.println("Valid rows: A,B,C,D,E,F");
             }
-            row = Utility.getStringInput("In which row do you want your ship to start?").toUpperCase();
+            row = Utility.getStringInput("Do provide a valid row").toUpperCase();
             errorCounter++;
         }
         return row;
@@ -112,7 +112,7 @@ public class Validator extends Utility {
             if (errorCounter > 0) {
                 System.out.println("Valid columns: 1,2,3,4,5,6");
             }
-            column = Utility.getIntInput("In which column do you want your ship to start?");
+            column = Utility.getIntInput("Do provide a valid column");
             errorCounter++;
         }
         return column;

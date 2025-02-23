@@ -115,5 +115,6 @@ public class Board extends AddShipToBoard {
     public void setName(String name) {
         this.name = name;
     }
+
 }
 

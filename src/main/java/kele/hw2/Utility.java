@@ -2,8 +2,8 @@ package kele.hw2;
 
 import java.util.Scanner;
 
-public class Utility extends AddShipToBoard {
-    protected static Scanner scanner = new Scanner(System.in);
+public class Utility extends Board {
+    protected static final Scanner scanner = new Scanner(System.in);
 
     public static String getStringInput(String question) {
         System.out.print(question + " - ");
@@ -27,20 +27,14 @@ public class Utility extends AddShipToBoard {
         return integer;
     }
 
-    public static boolean isShipThere(String row, Integer column) {
-        String[] technical = shipData.get(row);
+    public static boolean isShipThere(String row, Integer column, Board player) {
+        String[] technical = player.shipData.get(row);
         String dataToValidate = technical[column - 1];
         return !dataToValidate.equals("/");
     }
 
-    public static boolean isEnemyShipThere(String row, Integer column, Board enemy) {
-        String[] technical = enemy.shipData.get(row);
-        String dataToValidate = technical[column - 1];
-        return !dataToValidate.equals("/");
-    }
-
-    public static boolean isValidMove(String row, Integer column) {
-        String[] technical = dataToShow.get(row);
+    public static boolean isValidMove(String row, Integer column, Board player) {
+        String[] technical = player.dataToShow.get(row);
         String dataToValidate = technical[column - 1];
         return dataToValidate.equals("/");
     }
