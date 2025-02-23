@@ -40,7 +40,7 @@ public class Utility extends Board {
     }
 
     /* Kindly borrowed from the internet
-    It is only working if you run the .jar
+    It's only working if you run the .jar
     in IDE console output won't be cleared */
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");

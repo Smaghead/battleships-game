@@ -17,10 +17,10 @@ public class AddShipToBoard extends ShotHandler{
 
     private void addShipVertical(Integer length, String row, Integer column, Board player) throws InvalidMoveException {
         String orientation = Validator.getValidVerticalOrientation();
-        if ("below".equals(orientation) || "b".equals(orientation)) {
-            addShipVerticalBelowOrientation(row, column, length, player);
-        } else if ("above".equals(orientation) || "a".equals(orientation)) {
-            addShipVerticalAboveOrientation(row, column, length, player);
+        if ("down".equals(orientation) || "d".equals(orientation)) {
+            addShipVerticalDownOrientation(row, column, length, player);
+        } else if ("up".equals(orientation) || "u".equals(orientation)) {
+            addShipVerticalUpOrientation(row, column, length, player);
         }
     }
 
@@ -57,8 +57,8 @@ public class AddShipToBoard extends ShotHandler{
         }
     }
 
-    private void addShipVerticalBelowOrientation(String row, Integer column, Integer length, Board player) throws InvalidMoveException {
-        if (Validator.isAddShipVerticalBelowOrientationValid(row, column, length, player)) {
+    private void addShipVerticalDownOrientation(String row, Integer column, Integer length, Board player) throws InvalidMoveException {
+        if (Validator.isAddShipVerticalDownOrientationValid(row, column, length, player)) {
             for (int i = 0; i < length; i++) {
                 String[] technical = player.shipData.get(row);
                 String shipSign = String.valueOf(length);
@@ -72,8 +72,8 @@ public class AddShipToBoard extends ShotHandler{
         }
     }
 
-    private void addShipVerticalAboveOrientation(String row, Integer column, Integer length, Board player) throws InvalidMoveException {
-        if (Validator.isAddShipVerticalAboveOrientationValid(row, column, length, player)) {
+    private void addShipVerticalUpOrientation(String row, Integer column, Integer length, Board player) throws InvalidMoveException {
+        if (Validator.isAddShipVerticalUpOrientationValid(row, column, length, player)) {
             for (int i = 0; i < length; i++) {
                 String[] technical = player.shipData.get(row);
                 String shipSign = String.valueOf(length);

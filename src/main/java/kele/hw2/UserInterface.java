@@ -11,27 +11,33 @@ public class UserInterface extends Board {
     public static void initGame() {
         greetUser();
         createPlayers();
-        System.out.println(player1.getName() + " place all of your ships to the board");
+        System.out.println(player1.getName() + " place all 5 of your ships to the board");
         player1.addAllShipsToBoard();
-        System.out.println(player2.getName() + " place all of your ships to the board");
+        Utility.clearScreen();
+        System.out.println(player2.getName() + " place all 5 of your ships to the board");
         player2.addAllShipsToBoard();
+        Utility.clearScreen();
     }
 
     public static void mainGameLoop() throws InterruptedException {
         while (ShotHandler.getGameRunning() && turnTracker) {
-            System.out.println("It's your turn " + player1.getName());
+            System.out.println("It's your turn to fire " + player1.getName());
             player1.printBoard();
+            System.out.println("Ship(s) that has been already sunken:");
+            ShotHandler.printDestroyedShip(player2);
             player1.fireAction(player2);
             turnTracker = false;
-            TimeUnit.SECONDS.sleep(6);
+            TimeUnit.SECONDS.sleep(5);
             Utility.clearScreen();
         }
         while (ShotHandler.getGameRunning() && !turnTracker) {
-            System.out.println("It's your turn " + player2.getName());
+            System.out.println("It's your turn to fire " + player2.getName());
             player2.printBoard();
+            System.out.println("Ship(s) that has been already sunken:");
+            ShotHandler.printDestroyedShip(player1);
             player2.fireAction(player1);
             turnTracker = true;
-            TimeUnit.SECONDS.sleep(6);
+            TimeUnit.SECONDS.sleep(5);
             Utility.clearScreen();
         }
     }

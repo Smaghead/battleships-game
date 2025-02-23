@@ -21,7 +21,7 @@ public class Validator extends Utility {
         return true;
     }
 
-    public static boolean isAddShipVerticalBelowOrientationValid(String row, Integer column, Integer length, Board player) {
+    public static boolean isAddShipVerticalDownOrientationValid(String row, Integer column, Integer length, Board player) {
         Integer counterF = 0;
         for (int i = 0; i < length; i++) {
             if (Utility.isShipThere(row, column, player) || !isRowValid(row) || counterF == 1) {
@@ -37,7 +37,7 @@ public class Validator extends Utility {
         return true;
     }
 
-    public static boolean isAddShipVerticalAboveOrientationValid(String row, Integer column, Integer length, Board player) {
+    public static boolean isAddShipVerticalUpOrientationValid(String row, Integer column, Integer length, Board player) {
         Integer counterA = 0;
         for (int i = 0; i < length; i++) {
             if (Utility.isShipThere(row, column, player) || !isRowValid(row) || counterA == 1) {
@@ -58,9 +58,9 @@ public class Validator extends Utility {
         Integer errorCounter = 0;
         while (!isVerticalOrientationValid(orientation)) {
             if (errorCounter > 0) {
-                System.out.println("Valid inputs: A,B,above,below");
+                System.out.println("Valid inputs: U,D,up,down");
             }
-            orientation = Utility.getStringInput("In which orientation do you want your ship to go? \033[4mB\033[0melow / \033[4mA\033[0mbove").toLowerCase();
+            orientation = Utility.getStringInput("In which orientation do you want your ship to go? \033[4mU\033[0mp / \033[4mD\033[0mown").toLowerCase();
             errorCounter++;
         }
         return orientation;
@@ -120,10 +120,10 @@ public class Validator extends Utility {
 
     private static Boolean isVerticalOrientationValid(String orientation) {
         orientation = orientation.toLowerCase();
-        return "b".equals(orientation) ||
-                "a".equals(orientation) ||
-                "below".equals(orientation) ||
-                "above".equals(orientation);
+        return "u".equals(orientation) ||
+                "d".equals(orientation) ||
+                "up".equals(orientation) ||
+                "down".equals(orientation);
     }
 
     private static Boolean isHorizontalOrientationValid(String orientation) {

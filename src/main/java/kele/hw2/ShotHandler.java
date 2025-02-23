@@ -34,10 +34,10 @@ public class ShotHandler {
             String shipSign = getShipSign(row, column, enemy);
             deductShipHp(shipSign);
             addHit(row, column, enemy, (Board) this);
-            printDestroyedShip();
+            printDestroyedShip(enemy);
             setIsGameRunning(enemy);
         }else if (Utility.isValidMove(row, column, (Board) this)) {
-            System.out.println("Ship missed on cell: " + row + column);
+            System.out.println("Miss on cell: " + row + column);
             addMiss(row, column, (Board) this);
         } else {
             throw new InvalidMoveException();
@@ -71,38 +71,32 @@ public class ShotHandler {
         }
     }
 
-    private void printDestroyedShip(){
-        if (destroyerHp == 0) {
+    public static void printDestroyedShip(Board enemy){
+        if (enemy.getDestroyerHp() == 0) {
             System.out.println("The enemy's Destroyer has been sunk! (length 1)");
-            destroyerHp = 69;
         }
-        if (submarineHp == 0) {
+        if (enemy.getSubmarineHp() == 0) {
             System.out.println("The enemy's Submarine has been sunk! (length 2)");
-            submarineHp = 69;
         }
-        if (cruiserHp == 0) {
+        if (enemy.getCruiserHp() == 0) {
             System.out.println("The enemy's Cruiser has been sunk! (length 3)");
-            cruiserHp = 69;
         }
-        if (battleshipHp == 0) {
+        if (enemy.getBattleshipHp() == 0) {
             System.out.println("The enemy's Battleship has been sunk! (length 4)");
-            battleshipHp = 69;
         }
-        if (carrierHp == 0) {
+        if (enemy.getCarrierHp() == 0) {
             System.out.println("The enemy's Carrier has been sunk! (length 5)");
-            carrierHp = 69;
         }
     }
 
     private void setIsGameRunning(Board enemy) {
-        if (enemy.getDestroyerHp() == 69
-                && enemy.getSubmarineHp() == 69
-        && enemy.getCruiserHp() == 69
-        && enemy.getBattleshipHp() ==69
-        && enemy.getCarrierHp() == 69) {
+        if (enemy.getDestroyerHp() == 0
+                && enemy.getSubmarineHp() == 0
+        && enemy.getCruiserHp() == 0
+        && enemy.getBattleshipHp() ==0
+        && enemy.getCarrierHp() == 0) {
             isGameRunning = false;
         }
-        isGameRunning = true;
     }
 
     public static Boolean getGameRunning() {
