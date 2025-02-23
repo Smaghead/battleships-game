@@ -8,11 +8,11 @@ public class ShotHandler {
     protected HashMap<String, String[]> dataToShow = new HashMap<>();
     protected HashMap<String, String[]> shipData = new HashMap<>();
     protected static final String[] rowNames = {"A", "B", "C", "D", "E", "F"};
-    private Integer carrierHp = 5;
-    private Integer battleshipHp = 4;
-    private Integer cruiserHp = 3;
-    private Integer submarineHp = 2;
-    private Integer destroyerHp = 1;
+    public Integer carrierHp = 5;
+    public Integer battleshipHp = 4;
+    public Integer cruiserHp = 3;
+    public Integer submarineHp = 2;
+    public Integer destroyerHp = 1;
 
 
     public void fireAction(Board player) {
@@ -32,11 +32,11 @@ public class ShotHandler {
         if (Utility.isShipThere(row, column, enemy) && Utility.isValidMove(row, column, (Board) this)) {
             System.out.println("Ship hit on cell: " + row + column);
             String shipSign = getShipSign(row, column, enemy);
-            deductShipHp(shipSign);
+            enemy.deductShipHp(shipSign);
             addHit(row, column, enemy, (Board) this);
             printDestroyedShip(enemy);
             setIsGameRunning(enemy);
-        }else if (Utility.isValidMove(row, column, (Board) this)) {
+        } else if (Utility.isValidMove(row, column, (Board) this)) {
             System.out.println("Miss on cell: " + row + column);
             addMiss(row, column, (Board) this);
         } else {
@@ -61,7 +61,7 @@ public class ShotHandler {
         return technical[column - 1];
     }
 
-    private void deductShipHp(String string) {
+    public void deductShipHp(String string) {
         switch (string) {
             case "1" -> destroyerHp--;
             case "2" -> submarineHp--;
@@ -71,30 +71,49 @@ public class ShotHandler {
         }
     }
 
-    public static void printDestroyedShip(Board enemy){
+    public static void printDestroyedShip(Board enemy) {
         if (enemy.getDestroyerHp() == 0) {
             System.out.println("The enemy's Destroyer has been sunk! (length 1)");
+            enemy.setDestroyerHp(69);
         }
         if (enemy.getSubmarineHp() == 0) {
             System.out.println("The enemy's Submarine has been sunk! (length 2)");
+            enemy.setSubmarineHp(69);
         }
         if (enemy.getCruiserHp() == 0) {
             System.out.println("The enemy's Cruiser has been sunk! (length 3)");
+            enemy.setCruiserHp(69);
         }
         if (enemy.getBattleshipHp() == 0) {
             System.out.println("The enemy's Battleship has been sunk! (length 4)");
+            enemy.setBattleshipHp(69);
         }
         if (enemy.getCarrierHp() == 0) {
+            System.out.println("The enemy's Carrier has been sunk! (length 5)");
+            enemy.setCarrierHp(69);
+        }
+    }
+
+    public static void printAlreadyDestroyedShip(Board enemy) {
+        if (enemy.getDestroyerHp() == 69) {
+            System.out.println("The enemy's Destroyer has been sunk! (length 1)");
+        }if (enemy.getSubmarineHp() == 69) {
+            System.out.println("The enemy's Submarine has been sunk! (length 2)");
+        }if (enemy.getCruiserHp() == 69) {
+            System.out.println("The enemy's Cruiser has been sunk! (length 3)");
+        }if (enemy.getBattleshipHp() == 69) {
+            System.out.println("The enemy's Battleship has been sunk! (length 4)");
+        }if (enemy.getCarrierHp() == 69) {
             System.out.println("The enemy's Carrier has been sunk! (length 5)");
         }
     }
 
     private void setIsGameRunning(Board enemy) {
-        if (enemy.getDestroyerHp() == 0
-                && enemy.getSubmarineHp() == 0
-        && enemy.getCruiserHp() == 0
-        && enemy.getBattleshipHp() ==0
-        && enemy.getCarrierHp() == 0) {
+        if (enemy.getDestroyerHp() == 69
+                && enemy.getSubmarineHp() == 69
+                && enemy.getCruiserHp() == 69
+                && enemy.getBattleshipHp() == 69
+                && enemy.getCarrierHp() == 69) {
             isGameRunning = false;
         }
     }
@@ -121,5 +140,25 @@ public class ShotHandler {
 
     public Integer getDestroyerHp() {
         return destroyerHp;
+    }
+
+    public void setCarrierHp(Integer carrierHp) {
+        this.carrierHp = carrierHp;
+    }
+
+    public void setBattleshipHp(Integer battleshipHp) {
+        this.battleshipHp = battleshipHp;
+    }
+
+    public void setCruiserHp(Integer cruiserHp) {
+        this.cruiserHp = cruiserHp;
+    }
+
+    public void setSubmarineHp(Integer submarineHp) {
+        this.submarineHp = submarineHp;
+    }
+
+    public void setDestroyerHp(Integer destroyerHp) {
+        this.destroyerHp = destroyerHp;
     }
 }

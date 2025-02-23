@@ -11,6 +11,7 @@ public class UserInterface extends Board {
     public static void initGame() {
         greetUser();
         createPlayers();
+        Utility.clearScreen();
         System.out.println(player1.getName() + " place all 5 of your ships to the board");
         player1.addAllShipsToBoard();
         Utility.clearScreen();
@@ -24,7 +25,7 @@ public class UserInterface extends Board {
             System.out.println("It's your turn to fire " + player1.getName());
             player1.printBoard();
             System.out.println("Ship(s) that has been already sunken:");
-            ShotHandler.printDestroyedShip(player2);
+            ShotHandler.printAlreadyDestroyedShip(player2);
             player1.fireAction(player2);
             turnTracker = false;
             TimeUnit.SECONDS.sleep(5);
@@ -34,7 +35,7 @@ public class UserInterface extends Board {
             System.out.println("It's your turn to fire " + player2.getName());
             player2.printBoard();
             System.out.println("Ship(s) that has been already sunken:");
-            ShotHandler.printDestroyedShip(player1);
+            ShotHandler.printAlreadyDestroyedShip(player1);
             player2.fireAction(player1);
             turnTracker = true;
             TimeUnit.SECONDS.sleep(5);
