@@ -39,6 +39,24 @@ public class Utility extends Board {
         return dataToValidate.equals("/");
     }
 
+    private static Boolean isWinner(Board player) {
+        if (player.getDestroyerHp() == 69
+                && player.getSubmarineHp() == 69
+                && player.getCruiserHp() == 69
+                && player.getBattleshipHp() == 69
+                && player.getCarrierHp() == 69) {
+            return false;
+        }
+        return true;
+    }
+
+    public static String returnWinnerName(Board player1, Board player2) {
+        if (isWinner(player1)) {
+            return player1.getName();
+        }
+        return player2.getName();
+    }
+
     /* Kindly borrowed from the internet
     It's only working if you run the .jar
     in IDE console output won't be cleared */

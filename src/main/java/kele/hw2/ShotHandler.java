@@ -118,7 +118,7 @@ public class ShotHandler {
         }
     }
 
-    public static Boolean getGameRunning() {
+    public static Boolean getIsGameRunning() {
         return isGameRunning;
     }
 

@@ -21,7 +21,7 @@ public class UserInterface extends Board {
     }
 
     public static void mainGameLoop() throws InterruptedException {
-        while (ShotHandler.getGameRunning() && turnTracker) {
+        while (ShotHandler.getIsGameRunning() && turnTracker) {
             System.out.println("It's your turn to fire " + player1.getName());
             player1.printBoard();
             System.out.println("Ship(s) that has been already sunken:");
@@ -31,7 +31,7 @@ public class UserInterface extends Board {
             TimeUnit.SECONDS.sleep(5);
             Utility.clearScreen();
         }
-        while (ShotHandler.getGameRunning() && !turnTracker) {
+        while (ShotHandler.getIsGameRunning() && !turnTracker) {
             System.out.println("It's your turn to fire " + player2.getName());
             player2.printBoard();
             System.out.println("Ship(s) that has been already sunken:");
@@ -56,7 +56,24 @@ public class UserInterface extends Board {
         System.out.println("                                -Hesitation is defeat!");
     }
 
-    private static void createPlayers() {
+    public static void endScreen() throws InterruptedException {
+        System.out.println("              .-=========-.");
+        System.out.println("              \\'-=======-'/");
+        System.out.println("              _|   .=.   |_");
+        System.out.println("             ((|  {{1}}  |))");
+        System.out.println("              \\|   /|\\   |/");
+        System.out.println("               \\__ '`' __/");
+        System.out.println("                 _`) (`_");
+        System.out.println("               _/_______\\_");
+        System.out.println("              /___________\\");
+        System.out.println("");
+        System.out.println("Congrats " + Utility.returnWinnerName(player1, player2) + " you won the game!");
+        System.out.println("");
+        System.out.println("Program will auto shutdown in 5 sec.");
+        TimeUnit.SECONDS.sleep(5);
+    }
+
+    public static void createPlayers() {
         player1.setName(Utility.getStringInput("Player 1 what is your nickname?"));
         player2.setName(Utility.getStringInput("Player 2 what is your nickname?"));
     }
