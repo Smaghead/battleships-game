@@ -2,16 +2,16 @@ package kele.hw2;
 
 public class ShotHandler extends Board {
 
-    public static void fire(String row, Integer column, Board enemy) {
-        if (Utility.isEnemyShipThere(row, column, enemy)) {
+    public static void fire(String row, Integer column, Board player) throws InvalidMoveException {
+        if (Utility.isEnemyShipThere(row, column, player)) {
             System.out.println("Ship hit on row: " + row + " column: " + column);
             addHit(row, column);
-            //TODO add method to get ship sign
             //TODO deduct point from ship life
-            String[] technical = enemy.shipData.get(row);
-            String dataToValidate = technical[column - 1];
+        } else if (Utility.isValidMove(row, column)) {
+            addMiss(row, column);
+        } else {
+            throw new InvalidMoveException();
         }
-        //TODO add miss functionality
     }
 
     private static void addMiss(String row, Integer column) {
@@ -22,5 +22,10 @@ public class ShotHandler extends Board {
     private static void addHit(String row, Integer column) {
         String[] technical = dataToShow.get(row);
         technical[column - 1] = "x";
+    }
+    //TODO add method to get ship sign
+    private static String getShipSign(String row, Integer column, Board player){
+            String[] technical = player.shipData.get(row);
+        return technical[column - 1];
     }
 }
