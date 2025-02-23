@@ -50,7 +50,7 @@ public class UserInterface extends Board {
         player2.setName(Utility.getStringInput("Player 2 what is your nickname?"));
     }
 
-    // Kindly borrowed from the interweb
+    // Kindly borrowed from the internet
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
