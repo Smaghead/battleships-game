@@ -1,7 +1,5 @@
 # Battleships
-
 A console version of Battleships, a strategy guessing game for two players.
-
 ## How to play Battleships
 ### Players
 - 2
@@ -13,6 +11,12 @@ A console version of Battleships, a strategy guessing game for two players.
 - Hit will be marked with 'x' on your board
 - Miss will be marked with 'o' on your board
 - If a ship sank you will be notified
+### Ships
+- Carrier (5 tiles)
+- Battleship (4 tiles)
+- Cruiser (3 tiles)
+- Submarine (2 tiles)
+- Destroyer (1 tile)
 ## Basic Gameplay
 Players take turns firing shots (by calling out a grid coordinate) to attempt to hit the opponent's enemy ships.
 
