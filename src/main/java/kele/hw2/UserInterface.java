@@ -1,9 +1,34 @@
 package kele.hw2;
 
-public class UserInterface {
+public class UserInterface extends Board {
+    static Board player1 = new Board();
+    static Board player2 = new Board();
+    private static Boolean turnTracker = true;
 
 
-    public static void greetUser() {
+    public static void initGame() {
+        greetUser();
+        createPlayers();
+        System.out.println(player1.getName() + " place all of your ships to the board");
+        player1.addAllShipsToBoard();
+        System.out.println(player2.getName() + " place all of your ships to the board");
+        player2.addAllShipsToBoard();
+    }
+
+    public static void mainGameLoop() {
+        while (ShotHandler.getGameRunning() && turnTracker) {
+            System.out.println("It's your turn " + player1.getName());
+            player1.fireAction(player2);
+            turnTracker = false;
+        }
+        while (ShotHandler.getGameRunning() && !turnTracker) {
+            System.out.println("It's your turn " + player2.getName());
+            player2.fireAction(player1);
+            turnTracker = true;
+        }
+    }
+
+    private static void greetUser() {
         System.out.println("Starting Battleships by Smagh, have fun!");
         System.out.println("______       _   _   _           _     _           ");
         System.out.println("| ___ \\     | | | | | |         | |   (_)          ");
@@ -14,5 +39,10 @@ public class UserInterface {
         System.out.println("                                        | |        ");
         System.out.println("                                        | |        ");
         System.out.println("                                -Hesitation is defeat!");
+    }
+
+    private static void createPlayers() {
+        player1.setName(Utility.getStringInput("Player 1 what is your nickname?"));
+        player2.setName(Utility.getStringInput("Player 2 what is your nickname?"));
     }
 }
