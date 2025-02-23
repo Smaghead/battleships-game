@@ -7,7 +7,6 @@ public class AddShipToBoard {
     protected static HashMap<String, String[]> shipData = new HashMap<>();
     protected static final String[] rowNames = {"A", "B", "C", "D", "E", "F"};
 
-    //TODO addship won't throw exception if column will overflow
     protected void addShip(Integer length) throws InvalidMoveException {
         String row = Validator.getValidRow();
         Integer column = Validator.getValidColumn();

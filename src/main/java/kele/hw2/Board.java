@@ -8,11 +8,10 @@ public class Board extends AddShipToBoard {
     private static final String COLUMNS = " 1 2 3 4 5 6 ";
     private static final String ADD_SHIP_TOOL_TIP = "Board layout:\n Rows (left to right): 1,2,3,4,5,6\n Columns (top to bottom): A,B,C,D,E,F ";
     private static final String SEPARATOR_LINE = "-------------";
-    private final String name;
+    private String name;
 
 
-    public Board(String name) {
-        this.name = name;
+    public Board() {
         for (int i = 0; i < rowNames.length; i++) {
             dataToShow.put(rowNames[i], new String[]{"/", "/", "/", "/", "/", "/"});
         }
@@ -109,18 +108,12 @@ public class Board extends AddShipToBoard {
         System.out.println("");
     }
 
-    public void addMiss(String row, Integer column) {
-        String[] technical = dataToShow.get(row);
-        technical[column - 1] = "o";
-    }
-
-    public void addHit(String row, Integer column) {
-        String[] technical = dataToShow.get(row);
-        technical[column - 1] = "x";
-    }
-
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
 

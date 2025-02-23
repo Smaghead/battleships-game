@@ -33,6 +33,12 @@ public class Utility extends AddShipToBoard {
         return !dataToValidate.equals("/");
     }
 
+    public static boolean isEnemyShipThere(String row, Integer column, Board enemy) {
+        String[] technical = enemy.shipData.get(row);
+        String dataToValidate = technical[column - 1];
+        return !dataToValidate.equals("/");
+    }
+
     public static boolean isValidMove(String row, Integer column) {
         String[] technical = dataToShow.get(row);
         String dataToValidate = technical[column - 1];

@@ -3,7 +3,7 @@ package kele.hw2;
 public class Main {
     public static void main(String[] args) {
         UserInterface.greetUser();
-        Board player1 = new Board("Kele");
+        Board player1 = new Board();
         player1.addAllShipsToBoard();
 //        try {
 //            Utility.validateIsValidMove("A", 1);
