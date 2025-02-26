@@ -41,7 +41,7 @@ public class AddShipToBoard extends ShotHandler{
                 technical[column - 1 - i] = shipSign;
             }
         } else {
-            throw new InvalidMoveException();
+            throw new InvalidMoveException("Something happened");
         }
     }
 
@@ -53,7 +53,7 @@ public class AddShipToBoard extends ShotHandler{
                 technical[column - 1 + i] = shipSign;
             }
         } else {
-            throw new InvalidMoveException();
+            throw new InvalidMoveException("Something happened");
         }
     }
 
@@ -68,7 +68,7 @@ public class AddShipToBoard extends ShotHandler{
                 }
             }
         } else {
-            throw new InvalidMoveException();
+            throw new InvalidMoveException("Something happened");
         }
     }
 
@@ -83,7 +83,7 @@ public class AddShipToBoard extends ShotHandler{
                 }
             }
         } else {
-            throw new InvalidMoveException();
+            throw new InvalidMoveException("Something happened");
         }
     }
 

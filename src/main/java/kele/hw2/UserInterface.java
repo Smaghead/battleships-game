@@ -20,6 +20,8 @@ public class UserInterface extends Board {
         Utility.clearScreen();
     }
 
+    // As you also mentioned, this method can be refactored and possible move each of this while-loops
+    // into their own representative methods with proper method names
     public static void mainGameLoop() throws InterruptedException {
         while (ShotHandler.getIsGameRunning() && turnTracker) {
             System.out.println("It's your turn to fire " + player1.getName());

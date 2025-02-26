@@ -14,16 +14,21 @@ public class Board extends AddShipToBoard {
     public Board() {
         for (int i = 0; i < rowNames.length; i++) {
             dataToShow.put(rowNames[i], new String[]{"/", "/", "/", "/", "/", "/"});
+            // shipData.put(rowNames[i], new String[]{"/", "/", "/", "/", "/", "/"});
         }
+        // you can remove this for-loop
         for (int i = 0; i < rowNames.length; i++) {
             shipData.put(rowNames[i], new String[]{"/", "/", "/", "/", "/", "/"});
         }
     }
 
     public void addAllShipsToBoard() {
+        // The for-loop is doing a lot; it would make it more readable if you move part of the code to separate methods
+        // specially the while-loop and the try-catch block and then the switch.
+        // It is very difficult to understand what is happening there.
         System.out.println(ADD_SHIP_TOOL_TIP);
         for (int i = 1; i < 6; i++) {
-            System.out.println("");
+            System.out.println();
             System.out.println("Placing ship nr" + i + " from 5, with the length: " + i);
             Boolean isRepeatNecessary = true;
             while (isRepeatNecessary) {
@@ -51,6 +56,9 @@ public class Board extends AddShipToBoard {
         }
     }
 
+    // This method and printBoardWithShips can be merged into a single method (e.g. printBattleBoard or something like more generic)
+    // and handle appropriate action by passing a relevant parameter or some other way - only because they seemed to be called from different place and time;
+    // because the content of the methods are the same except this.printRow(i); and this.printShipRow(i);
     public void printBoard() {
         System.out.println(COLUMNS);
         System.out.println(FIRST_SEPARATOR_LINE);

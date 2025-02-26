@@ -40,7 +40,7 @@ public class ShotHandler {
             System.out.println("Miss on cell: " + row + column);
             addMiss(row, column, (Board) this);
         } else {
-            throw new InvalidMoveException();
+            throw new InvalidMoveException("Something happened");
         }
     }
 

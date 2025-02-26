@@ -2,6 +2,8 @@ package kele.hw2;
 
 import java.util.Scanner;
 
+// Utility class shouldn't extend any other class, that's against the purpose of a Util class
+// though I believe this is not necessary a util class; might be better to rename it.
 public class Utility extends Board {
     protected static final Scanner scanner = new Scanner(System.in);
 
@@ -10,6 +12,7 @@ public class Utility extends Board {
         return scanner.next();
     }
 
+    //check regex to validate user input
     public static int getIntInput(String question) {
         Boolean isRepeatNecessary = true;
         Integer integer = 0;
@@ -60,6 +63,7 @@ public class Utility extends Board {
     /* Kindly borrowed from the internet
     It's only working if you run the .jar
     in IDE console output won't be cleared */
+    // I am unsure about the purpose of this method, maybe we can check it out together
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
